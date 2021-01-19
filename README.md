@@ -1,23 +1,9 @@
-Battlefield: Bad Company 2 Master Server Emulator
+NFS Carbon FESL Server Emulator
 =================================================
 
-![Battlefield: Bad Company 2 Cover](https://upload.wikimedia.org/wikipedia/en/b/b3/Battlefield_Bad_Company_2_cover.jpg "Battlefield: Bad Company 2 Cover")
+Based on [Battlefield: Bad Company 2 Master Server Emulator](https://github.com/Tratos/BFBC2_MasterServer) by [Tratos / B1naryKill3r](https://github.com/Tratos)
 
-
-Game Info
----------
-
-Type         | Value
-------------:|:-----------
-Developer(s) | EA DICE
-Publisher(s) | Electronic Arts
-Writer(s)    | David Goldfarb
-Composer(s)  | Mikael Karlsson, Joel Eriksson
-Series       | Battlefield
-Engine       | Frostbite 1.5
-Platform(s)  | Microsoft Windows, PlayStation 3, Xbox 360, iOS, Kindle Fire
-Genre(s)     | First-person shooter
-Mode(s)      | Single-player, Multi-Player
+![Need for Speed: Carbon Cover](https://upload.wikimedia.org/wikipedia/en/a/a4/Need_for_Speed_Carbon_Game_Cover.jpg "Need for Speed: Carbon Cover")
 
 
 Legal notes
@@ -32,7 +18,8 @@ Legal notes
 Requirements
 ------------
 
-- Original copy of Battlefield: Bad Company 2
+- Need for Speed Carbon
+- Redirects from the official FESL servers (TODO - add override ASI code and links)
 
 Module           | Version | Download
 ----------------:|:-------:|:------------
@@ -51,10 +38,9 @@ Also you have to open these ports:
 
 Port   | Type
 ------:|:-------
-18390  | TCP
-18395  | TCP/UDP
-19021  | TCP
-19026  | TCP/UDP
+18210  | TCP/UDP
+18215  | TCP/UDP
+13505  | TCP
 80     | TCP
 
 
@@ -62,10 +48,10 @@ Setting up the emulator
 -----------------------
 
 - Make sure that all required ports (see above) are open
-- Write the IP of the PC where the emulator will be hosted in the config.ini to the key 'emulator_ip' (overwrite "REPLACE_ME") and save it
+- Write the IP of the PC where the emulator will be hosted in the config.ini to the key 'emulator_ip' (overwrite "localhost") and save it
 - Run `Init.py`
 
-Setting up Client and Server
+Setting up Client and Server (TODO - THESE INSTRUCTIONS AREN'T 100% VALID YET FOR NFS CARBON)
 ----------------------------
 
 There are 2 different methods you can choose from to set them up
@@ -81,21 +67,7 @@ There are 2 different methods you can choose from to set them up
 2.2. Add this to your hosts file:
 
     # redirect client ip's
-    xxx bfbc2-pc.fesl.ea.com
-    xxx bfbc2-pc.theater.ea.com
-    # redirect server ip's
-    xxx bfbc2-pc-server.fesl.ea.com
-    xxx bfbc2-pc-server.theater.ea.com
-    # optional
-    xxx easo.ea.com
+    xxx nfs-pc.fesl.ea.com
+    xxx nfs-pc.theater.ea.com
 
 *Where 'xxx' stands for the IP of the PC that hosts the emulator.*
-
-Credits
--------
-
-- B1naryKill3r (Main Programmer/Developer)
-
-Special thanks to:
-- Domo and Freaky123 (for sharing the Server Files and the v10.0 source code)
-- DICE (for making the game)
