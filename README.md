@@ -79,3 +79,4 @@ TODO LIST
 - GLST currently crashes
 - More EA Messenger backend code
 - lots and lots of testing
+- Python3 conversion or even a rewrite entirely?
