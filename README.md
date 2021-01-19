@@ -71,3 +71,11 @@ There are 2 different methods you can choose from to set them up
     xxx nfs-pc.theater.ea.com
 
 *Where 'xxx' stands for the IP of the PC that hosts the emulator.*
+
+
+TODO LIST
+-----------
+- Add accompanying ASI code for ingame overrides (and SSL patching)
+- GLST currently crashes
+- More EA Messenger backend code
+- lots and lots of testing
