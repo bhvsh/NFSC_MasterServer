@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import re
+from Globals import globalUsers
+from Globals import globalUserCount
+from Globals import ServerUser
 
 from base64 import b64encode, b64decode
 from datetime import datetime
@@ -44,7 +47,7 @@ def HandleNuGetTos(self):
 
     toSend = Packet().create()
 
-    toSend.set("PacketData", "TXN", "NuGetTos")
+    toSend.set("PacketData", "TXN", "GetTos")
     toSend.set("PacketData", "version", "20426_17.20426_17")
 
     if exists("Data/termsOfUse/termsOfUse_" + self.CONNOBJ.locale):
@@ -54,7 +57,7 @@ def HandleNuGetTos(self):
         with open("Data/termsOfUse/default") as termsOfUseFile:
             termsOfUse = termsOfUseFile.read()
 
-    termsOfUse = quote(termsOfUse, safe=" ,.'&/()?;®@§[]").replace("%3A", "%3a").replace("%0A", "%0a") + "%0a%0a%09Battlefield%3a Bad Company 2 Master Server Emulator by B1naryKill3r%0ahttps://github.com/B1naryKill3r/BFBC2_MasterServer"
+    termsOfUse = quote(termsOfUse, safe=" ,.'&/()?;®@§[]").replace("%3A", "%3a").replace("%0A", "%0a") + "%0a%0a%09NFS Carbon Server Emulator by Xan%0aBased on Battlefield%3a Bad Company 2 Master Server Emulator by B1naryKill3r / Tratos%0ahttps://github.com/Tratos/BFBC2_MasterServer"
     toSend.set("PacketData", "tos", termsOfUse)
 
     Packet(toSend).send(self, "acct", 0x80000000, self.CONNOBJ.plasmaPacketID)
@@ -66,7 +69,7 @@ def HandleNuAddAccount(self, data):
     toSend = Packet().create()
     toSend.set("PacketData", "TXN", "NuAddAccount")
 
-    nuid = data.get('PacketData', 'nuid')  # Email
+    name = data.get('PacketData', 'name')  # Email
     password = data.get('PacketData', 'password')  # Password
 
     bd_Day = data.get('PacketData', 'DOBDay')
@@ -75,33 +78,33 @@ def HandleNuAddAccount(self, data):
     birthday = datetime.strptime(bd_Day + " " + bd_Month + " " + bd_Year, "%d %m %Y")
     timeNow = datetime.now()
 
-    country = data.get('PacketData', 'country')
+    country = data.get('PacketData', 'countryCode')
 
-    if len(nuid) > 32 or len(nuid) < 3:  # Entered user name length is out of bounds
+    if len(name) > 32 or len(name) < 3:  # Entered user name length is out of bounds
         toSend.set("PacketData", "errorContainer.[]", "1")
         toSend.set("PacketData", "errorCode", "21")
         toSend.set("PacketData", "localizedMessage", 'The required parameters for this call are missing or invalid')
         toSend.set("PacketData", "errorContainer.0.fieldName", "displayName")
 
-        if len(nuid) > 32:
+        if len(name) > 32:
             toSend.set("PacketData", "errorContainer.0.fieldError", "3")
             toSend.set("PacketData", "errorContainer.0.value", "TOO_LONG")
-            self.logger_err.new_message("[Register] Email " + nuid + " is too long!", 1)
+            self.logger_err.new_message("[Register] Email " + name + " is too long!", 1)
         else:
             toSend.set("PacketData", "errorContainer.0.fieldError", "2")
             toSend.set("PacketData", "errorContainer.0.value", "TOO_SHORT")
-            self.logger_err.new_message("[Register] Email " + nuid + " is too short!", 1)
-    elif db.checkIfEmailTaken(nuid):  # Email is already taken
+            self.logger_err.new_message("[Register] Email " + name + " is too short!", 1)
+    elif db.checkIfEmailTaken(name):  # Email is already taken
         toSend.set("PacketData", "errorContainer.[]", "0")
         toSend.set("PacketData", "errorCode", "160")
         toSend.set("PacketData", "localizedMessage", 'That account name is already taken')
-        self.logger_err.new_message("[Register] User with email " + nuid + " is already registered!", 1)
+        self.logger_err.new_message("[Register] User with email " + name + " is already registered!", 1)
     elif timeNow.year - birthday.year - ((timeNow.month, timeNow.day) < (birthday.month, birthday.day)) < 18:  # New user is not old enough
         toSend.set("PacketData", "errorContainer.[]", "1")
         toSend.set("PacketData", "errorContainer.0.fieldName", "dob")
         toSend.set("PacketData", "errorContainer.0.fieldError", "15")
         toSend.set("PacketData", "errorCode", "21")
-        self.logger_err.new_message("[Register] User with email " + nuid + " is too young to register new account!", 1)
+        self.logger_err.new_message("[Register] User with email " + name + " is too young to register new account!", 1)
     elif len(password) > 16:
         toSend.set("PacketData", "errorContainer.[]", "1")
         toSend.set("PacketData", "errorCode", "21")
@@ -109,7 +112,7 @@ def HandleNuAddAccount(self, data):
         toSend.set("PacketData", "errorContainer.0.fieldName", "displayName")
         toSend.set("PacketData", "errorContainer.0.fieldError", "3")
         toSend.set("PacketData", "errorContainer.0.value", "TOO_LONG")
-        self.logger_err.new_message("[Register] Password for user " + nuid + " is too long!", 1)
+        self.logger_err.new_message("[Register] Password for user " + name + " is too long!", 1)
     elif bool(re.match("^[a-zA-Z0-9]+$", password)) is None:
         toSend.set("PacketData", "errorContainer.[]", "1")
         toSend.set("PacketData", "errorCode", "21")
@@ -117,24 +120,32 @@ def HandleNuAddAccount(self, data):
         toSend.set("PacketData", "errorContainer.0.fieldName", "displayName")
         toSend.set("PacketData", "errorContainer.0.fieldError", "6")
         toSend.set("PacketData", "errorContainer.0.value", "NOT_ALLOWED")
-        self.logger_err.new_message("[Register] Password for user " + nuid + " contains illegal characters!", 1)
+        self.logger_err.new_message("[Register] Password for user " + name + " contains illegal characters!", 1)
     else:
-        db.registerUser(nuid, password, str(birthday).split(" ")[0], country)
-        self.logger.new_message("[Register] User " + nuid + " was registered successfully!", 1)
+        db.registerUser(name, password, str(birthday).split(" ")[0], country)
+        loginData = db.loginUser(name, password)
+        self.CONNOBJ.userID = loginData['UserID']
+        db.addPersona(self.CONNOBJ.userID, name)
+        self.logger.new_message("[Register] User " + name + " was registered successfully!", 1)
 
     Packet(toSend).send(self, "acct", 0x80000000, self.CONNOBJ.plasmaPacketID)
 
+def CheckUserAlreadyLoggedIn(userID):
+	for user in globalUsers:
+		if user.UserID == userID:
+			return user
+	return 0
 
 def HandleNuLogin(self, data):
     """ User is logging in with email and password """
 
     toSend = Packet().create()
-    toSend.set("PacketData", "TXN", "NuLogin")
+    toSend.set("PacketData", "TXN", "Login")
 
     returnEncryptedInfo = int(data.get("PacketData", "returnEncryptedInfo"))  # If 1 - User wants to store login information
 
     try:
-        nuid = data.get('PacketData', "nuid")
+        name = data.get('PacketData', "name")
         password = data.get('PacketData', "password")
     except:
         encryptedInfo = data.get("PacketData", "encryptedInfo")
@@ -144,21 +155,35 @@ def HandleNuLogin(self, data):
 
         loginData = b64decode(encryptedLoginData).split('\f')
 
-        nuid = loginData[0]
+        name = loginData[0]
         password = loginData[1]
 
-    loginData = db.loginUser(nuid, password)
+    loginData = db.loginUser(name, password)
 
     if loginData['UserID'] > 0:  # Got UserID - Login Successful
         self.CONNOBJ.accountSessionKey = loginData['SessionID']
         self.CONNOBJ.userID = loginData['UserID']
-        self.CONNOBJ.nuid = nuid
-
+        self.CONNOBJ.name = name
+        #self.CONNOBJ.personaName = name
+        useridx = CheckUserAlreadyLoggedIn((int(loginData['UserID'])))
+        global globalUserCount
+        global globalUsers
+        
+        if useridx != 0:
+            useridx.sessionKey = loginData['SessionID']
+        else:
+		    globalUsers.append(ServerUser())
+		    globalUsers[globalUserCount].Username = name
+		    globalUsers[globalUserCount].UserID = int(loginData['UserID'])
+		    globalUsers[globalUserCount].sessionKey = loginData['SessionID']
+		    globalUserCount += 1
+            
+       # print("Session key is:" +globalUsers[0].sessionKey)
         toSend.set("PacketData", "lkey", loginData['SessionID'])
-        toSend.set("PacketData", "nuid", nuid)
+        toSend.set("PacketData", "name", name)
 
         if returnEncryptedInfo == 1:
-            encryptedLoginData = "Ciyvab0tregdVsBtboIpeChe4G6uzC1v5_-SIxmvSL" + b64encode(nuid + "\f" + password)
+            encryptedLoginData = "Ciyvab0tregdVsBtboIpeChe4G6uzC1v5_-SIxmvSL" + b64encode(name + "\f" + password)
             if encryptedLoginData.find('==') != -1:
                 encryptedLoginData = encryptedLoginData.replace("==", '-_')
             else:
@@ -169,20 +194,29 @@ def HandleNuLogin(self, data):
         toSend.set("PacketData", "profileId", str(loginData['UserID']))
         toSend.set("PacketData", "userId", str(loginData['UserID']))
 
-        self.logger.new_message("[Login] User " + nuid + " logged in successfully!", 1)
+        self.logger.new_message("[Login] User " + name + " logged in successfully!", 1)
     elif loginData['UserID'] == 0:  # The password the user specified is incorrect
         toSend.set("PacketData", "localizedMessage", "The password the user specified is incorrect")
         toSend.set("PacketData", "errorContainer.[]", "0")
         toSend.set("PacketData", "errorCode", "122")
 
-        self.logger_err.new_message("[Login] User " + nuid + " specified incorrect password!", 1)
+        self.logger_err.new_message("[Login] User " + name + " specified incorrect password!", 1)
     else:  # User not found
         toSend.set("PacketData", "localizedMessage", "The user was not found")
         toSend.set("PacketData", "errorContainer.[]", "0")
         toSend.set("PacketData", "errorCode", "101")
 
-        self.logger_err.new_message("[Login] User " + nuid + " does not exist", 1)
+        self.logger_err.new_message("[Login] User " + name + " does not exist", 1)
 
+    personaData = db.loginPersona(self.CONNOBJ.userID, name)
+    if personaData is not None:
+        self.CONNOBJ.personaID = personaData['personaId']
+        self.CONNOBJ.personaSessionKey = personaData['lkey']
+        self.CONNOBJ.personaName = name
+
+        self.logger.new_message("[Persona] User " + self.CONNOBJ.name + " just logged as " + name, 1)
+    else:
+        self.logger_err.new_message("[Persona] User " + self.CONNOBJ.name + " wanted to login as " + name + " but this persona cannot be found!", 1)
     Packet(toSend).send(self, "acct", 0x80000000, self.CONNOBJ.plasmaPacketID)
 
 
@@ -222,12 +256,12 @@ def HandleNuLoginPersona(self, data):
         toSend.set("PacketData", "profileId", str(self.CONNOBJ.personaID))
         toSend.set("PacketData", "userId", str(self.CONNOBJ.personaID))
 
-        self.logger.new_message("[Persona] User " + self.CONNOBJ.nuid + " just logged as " + requestedPersonaName, 1)
+        self.logger.new_message("[Persona] User " + self.CONNOBJ.name + " just logged as " + requestedPersonaName, 1)
     else:
         toSend.set("PacketData", "localizedMessage", "The user was not found")
         toSend.set("PacketData", "errorContainer.[]", "0")
         toSend.set("PacketData", "errorCode", "101")
-        self.logger_err.new_message("[Persona] User " + self.CONNOBJ.nuid + " wanted to login as " + requestedPersonaName + " but this persona cannot be found!", 1)
+        self.logger_err.new_message("[Persona] User " + self.CONNOBJ.name + " wanted to login as " + requestedPersonaName + " but this persona cannot be found!", 1)
 
     Packet(toSend).send(self, "acct", 0x80000000, self.CONNOBJ.plasmaPacketID)
 
@@ -250,18 +284,18 @@ def HandleNuAddPersona(self, data):
             toSend.set("PacketData", "errorContainer.0.fieldError", "3")
             toSend.set("PacketData", "errorContainer.0.value", "TOO_LONG")
 
-            self.logger_err.new_message("[Persona] User " + self.CONNOBJ.nuid + " wanted to create new persona, but name " + name + " is too long!", 1)
+            self.logger_err.new_message("[Persona] User " + self.CONNOBJ.name + " wanted to create new persona, but name " + name + " is too long!", 1)
         else:
             toSend.set("PacketData", "errorContainer.0.fieldError", "2")
             toSend.set("PacketData", "errorContainer.0.value", "TOO_SHORT")
 
-            self.logger_err.new_message("[Persona] User " + self.CONNOBJ.nuid + " wanted to create new persona, but name " + name + " is too short!", 1)
+            self.logger_err.new_message("[Persona] User " + self.CONNOBJ.name + " wanted to create new persona, but name " + name + " is too short!", 1)
     elif db.getPersonaInfo(name):  # Persona name has to be unique
         toSend.set("PacketData", "errorContainer.[]", "0")
         toSend.set("PacketData", "localizedMessage", "That account name is already taken")
         toSend.set("PacketData", "errorCode", "160")
 
-        self.logger_err.new_message("[Persona] User " + self.CONNOBJ.nuid + " wanted to create new persona (" + name + "), but persona with this name is already registered in this account!", 1)
+        self.logger_err.new_message("[Persona] User " + self.CONNOBJ.name + " wanted to create new persona (" + name + "), but persona with this name is already registered in this account!", 1)
     elif bool(re.match("^[a-zA-Z0-9_\-&()*+./:;<=>?\[\]^{|}~]+$", name)) is False:
         toSend.set("PacketData", "errorContainer.[]", "1")
         toSend.set("PacketData", "errorCode", "21")
@@ -272,7 +306,7 @@ def HandleNuAddPersona(self, data):
     else:
         db.addPersona(self.CONNOBJ.userID, name)
 
-        self.logger.new_message("[Persona] User " + self.CONNOBJ.nuid + " just created new persona (" + name + ")", 1)
+        self.logger.new_message("[Persona] User " + self.CONNOBJ.name + " just created new persona (" + name + ")", 1)
 
     Packet(toSend).send(self, "acct", 0x80000000, self.CONNOBJ.plasmaPacketID)
 
@@ -288,12 +322,12 @@ def HandleNuDisablePersona(self, data):
     if db.getPersonaInfo(personaToDisable):
         db.removePersona(self.CONNOBJ.userID, personaToDisable)
 
-        self.logger.new_message("[Persona] User " + self.CONNOBJ.nuid + " just removed persona (" + personaToDisable + ")", 1)
+        self.logger.new_message("[Persona] User " + self.CONNOBJ.name + " just removed persona (" + personaToDisable + ")", 1)
     else:
         toSend.set("PacketData", "localizedMessage", "The data necessary for this transaction was not found")
         toSend.set("PacketData", "errorContainer.[]", "0")
         toSend.set("PacketData", "errorCode", "104")
-        self.logger_err.new_message("[Persona] User " + self.CONNOBJ.nuid + " wanted to remove persona (" + personaToDisable + "), but persona with this name didn't exist!", 1)
+        self.logger_err.new_message("[Persona] User " + self.CONNOBJ.name + " wanted to remove persona (" + personaToDisable + "), but persona with this name didn't exist!", 1)
 
     Packet(toSend).send(self, "acct", 0x80000000, self.CONNOBJ.plasmaPacketID)
 
@@ -411,11 +445,11 @@ def HandleNuLookupUserInfo(self, data):
 def ReceivePacket(self, data, txn):
     if txn == 'GetCountryList':
         HandleGetCountryList(self)
-    elif txn == 'NuGetTos':
+    elif txn == 'GetTos':
         HandleNuGetTos(self)
-    elif txn == 'NuAddAccount':
+    elif txn == 'AddAccount':
         HandleNuAddAccount(self, data)
-    elif txn == 'NuLogin':
+    elif txn == 'Login':
         HandleNuLogin(self, data)
     elif txn == 'NuGetPersonas':
         HandleNuGetPersonas(self)

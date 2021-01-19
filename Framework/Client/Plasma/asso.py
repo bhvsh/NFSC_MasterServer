@@ -50,7 +50,7 @@ def HandleAddAssociations(self, data):
     toSend.set("PacketData", "result.[]", "0")  # TODO: Check what to send when it's 1
     toSend.set("PacketData", "type", str(data.get("PacketData", "type")))
     toSend.set("PacketData", "domainPartition.domain", "eagames")
-    toSend.set("PacketData", "domainPartition.subDomain", "BFBC2")
+    toSend.set("PacketData", "domainPartition.subDomain", "NFS-2007")
     toSend.set("PacketData", "maxListSize", "100")
 
     type = data.get("PacketData", "type")

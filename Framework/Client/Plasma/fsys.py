@@ -15,7 +15,7 @@ def HandleHello(self, data):
     toSend.set("PacketData", "domainPartition.domain", "eagames")
     toSend.set("PacketData", "messengerIp", readFromConfig("connection", "emulator_ip"))
     toSend.set("PacketData", "messengerPort", 0)  # Unknown data are being send to this port
-    toSend.set("PacketData", "domainPartition.subDomain", "BFBC2")
+    toSend.set("PacketData", "domainPartition.subDomain", "NFS-2007")
     toSend.set("PacketData", "TXN", "Hello")
     toSend.set("PacketData", "activityTimeoutSecs", 0)  # We could let idle clients disconnect here automatically?
     toSend.set("PacketData", "curTime", currentTime)
@@ -97,24 +97,23 @@ def HandleGoodbye(self, data):
 
 def HandleGetPingSites(self):
     toSend = Packet().create()
-    toSend.set("PacketData", "TXN", "GetPingSites")
+    
 
     emuIp = readFromConfig("connection", "emulator_ip")
 
-    toSend.set("PacketData", "pingSite.[]", "4")
+    toSend.set("PacketData", "pingSite.[]", "3")
     toSend.set("PacketData", "pingSite.0.addr", emuIp)
     toSend.set("PacketData", "pingSite.0.type", "0")
-    toSend.set("PacketData", "pingSite.0.name", "gva")
+    toSend.set("PacketData", "pingSite.0.name", "nfs-wc")
     toSend.set("PacketData", "pingSite.1.addr", emuIp)
-    toSend.set("PacketData", "pingSite.1.type", "1")
-    toSend.set("PacketData", "pingSite.1.name", "nrt")
+    toSend.set("PacketData", "pingSite.1.type", "0")
+    toSend.set("PacketData", "pingSite.1.name", "nfs-ec")
     toSend.set("PacketData", "pingSite.2.addr", emuIp)
-    toSend.set("PacketData", "pingSite.2.type", "2")
-    toSend.set("PacketData", "pingSite.2.name", "iad")
-    toSend.set("PacketData", "pingSite.3.addr", emuIp)
-    toSend.set("PacketData", "pingSite.3.type", "3")
-    toSend.set("PacketData", "pingSite.3.name", "sjc")
+    toSend.set("PacketData", "pingSite.2.type", "0")
+    toSend.set("PacketData", "pingSite.2.name", "nfs-eu")
     toSend.set("PacketData", "minPingSitesToPing", "0")
+	
+    toSend.set("PacketData", "TXN", "GetPingSites")
 
     Packet(toSend).send(self, "fsys", 0x80000000, self.CONNOBJ.plasmaPacketID)
 
