@@ -44,11 +44,11 @@ class Server:
     newPlayerID = 0
     connectedPlayers = []
 
-    validServers = {'bfbc2.server.pc@ea.com': {'password': 'Che6rEPA', 'id': 1},  # Server NUID {'password': serverPassword, 'id': userID}
+    validServers = {'nfs.server.pc@ea.com': {'password': 'Che6rEPA', 'id': 1},  # Server NUID {'password': serverPassword, 'id': userID}
                     'bfbc.server.ps3@ea.com': {'password': 'zAmeH7bR', 'id': 2},
                     'bfbc.server.xenon@ea.com': {'password': 'B8ApRavE', 'id': 3}}
 
-    validPersonas = {"bfbc2.server.p": 1,  # PersonaName: PersonaID
+    validPersonas = {"nfs.server.p": 1,  # PersonaName: PersonaID
                      "bfbc.server.ps": 2,
                      "bfbc.server.xe": 3}
 

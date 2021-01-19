@@ -227,20 +227,20 @@ class Database(object):
     def addDefaultEntitlements(self, forUserID):
         currentTime = strftime('%Y-%m-%dT%H:%MZ')
 
-        defaultEntitlements = [(forUserID, 'NoVetRank', "BFBC2NAM:PC:NOVETRANK", 0, currentTime, "", "", "ACTIVE", "",),
+        defaultEntitlements = [(forUserID, 'NoVetRank', "NFSNAM:PC:NOVETRANK", 0, currentTime, "", "", "ACTIVE", "",),
                                (forUserID, '', "ONLINE_ACCESS", 0, currentTime, "", "DR:156691300", "ACTIVE", "",),
-                               (forUserID, 'AddsVetRank', "BFBC2:PC:ADDSVETRANK", 0, currentTime, "", "", "ACTIVE", "",),  # sometimes clients don't have this in the packet...whatever
-                               (forUserID, 'BFBC2PC', 'BETA_ONLINE_ACCESS', 0, currentTime, "", "OFB-BFBC:19121", "ACTIVE", "",)]  # beta access is nice too (though it doesnt seem to affect anything)
+                               (forUserID, 'AddsVetRank', "NFS:PC:ADDSVETRANK", 0, currentTime, "", "", "ACTIVE", "",),  # sometimes clients don't have this in the packet...whatever
+                               (forUserID, 'NFSPC', 'BETA_ONLINE_ACCESS', 0, currentTime, "", "OFB-BFBC:19121", "ACTIVE", "",)]  # beta access is nice too (though it doesnt seem to affect anything)
 
         if readFromConfig("emulator", "new_players_have_vietnam"):
-            defaultEntitlements.append((forUserID, 'BFBC2PC', "BFBC2:PC:VIETNAM_ACCESS", 0, currentTime, "", "DR:219316800", "ACTIVE", ""))
-            defaultEntitlements.append((forUserID, 'BFBC2PC', "BFBC2:PC:VIETNAM_PDLC", 0, currentTime, "", "DR:219316800", "ACTIVE", ""))
+            defaultEntitlements.append((forUserID, 'NFSPC', "NFS:PC:VIETNAM_ACCESS", 0, currentTime, "", "DR:219316800", "ACTIVE", ""))
+            defaultEntitlements.append((forUserID, 'NFSPC', "NFS:PC:VIETNAM_PDLC", 0, currentTime, "", "DR:219316800", "ACTIVE", ""))
 
         if readFromConfig("emulator", "new_players_have_premium"):
-            defaultEntitlements.append((forUserID, 'BFBC2PC', "BFBC2:PC:LimitedEdition", 1, currentTime, "", "OFB-BFBC:19120", "ACTIVE", ""))
+            defaultEntitlements.append((forUserID, 'NFSPC', "NFS:PC:LimitedEdition", 1, currentTime, "", "OFB-BFBC:19120", "ACTIVE", ""))
 
         if readFromConfig("emulator", "new_players_have_specact"):
-            defaultEntitlements.append((forUserID, 'BFBC2PC', "BFBC2:PC:ALLKIT", 0, currentTime, "", "DR:192365600", "ACTIVE", ""))
+            defaultEntitlements.append((forUserID, 'NFSPC', "NFS:PC:ALLKIT", 0, currentTime, "", "DR:192365600", "ACTIVE", ""))
 
         if readFromConfig("emulator", "new_players_are_veterans"):
             defaultEntitlements.append((forUserID, 'AddsVetRank', "BF3:PC:ADDSVETRANK", 0, currentTime, "", "OFB-EAST:40873", "ACTIVE", ""))
