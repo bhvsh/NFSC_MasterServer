@@ -1,4 +1,4 @@
-from Globals import Servers
+from Globals import Clients
 from Utilities.Packet import Packet
 
 
@@ -13,7 +13,7 @@ def ReceiveRequest(self, data):
     if lobbyID is not None and gameID is not None:
         server = None
 
-        for srv in Servers:
+        for srv in Clients:
             if str(srv.serverData.get("ServerData", "LID")) == lobbyID and str(srv.serverData.get("ServerData", "GID")) == gameID:
                 server = srv
 
@@ -31,7 +31,7 @@ def ReceiveRequest(self, data):
         toSend.set("PacketData", "N", str(server.serverData.get("ServerData", "NAME")))  # name of server in list
         toSend.set("PacketData", "AP", str(server.activePlayers))  # current number of players on server
         toSend.set("PacketData", "MP", str(server.serverData.get("ServerData", "MAX-PLAYERS")))  # Maximum players on server
-        toSend.set("PacketData", "QP", str(server.serverData.get("ServerData", "B-U-QueueLength")))  # Something with the queue...lets just set this equal to B-U-QueueLength
+        toSend.set("PacketData", "QP", str(server.serverData.get("ServerData", "B-U-length")))  # Something with the queue...lets just set this equal to B-U-length
         toSend.set("PacketData", "JP", str(server.joiningPlayers))  # Players that are joining the server right now?
         toSend.set("PacketData", "PL", "PC")  # Platform - PC / XENON / PS3
 
@@ -41,28 +41,29 @@ def ReceiveRequest(self, data):
         toSend.set("PacketData", "J", str(server.serverData.get("ServerData", "JOIN")))  # ??? constant value - "O"
 
         # Userdata
-        toSend.set("PacketData", "B-U-Softcore", str(server.serverData.get("ServerData", "B-U-Softcore")))  # Game is softcore - what does that mean?
-        toSend.set("PacketData", "B-U-Hardcore", str(server.serverData.get("ServerData", "B-U-Hardcore")))  # Game is hardcore
-        toSend.set("PacketData", "B-U-HasPassword", str(server.serverData.get("ServerData", "B-U-HasPassword")))  # Game has password
-        toSend.set("PacketData", "B-U-Punkbuster", str(server.serverData.get("ServerData", "B-U-Punkbuster")))  # Game has punkbuster?
-        toSend.set("PacketData", "B-U-EA", str(server.serverData.get("ServerData", "B-U-EA")))  # is server EA Orginal?
+        toSend.set("PacketData", "B-U-matchmaking_state", str(server.serverData.get("ServerData", "B-U-matchmaking_state")))
+        toSend.set("PacketData", "B-U-team_play", str(server.serverData.get("ServerData", "B-U-team_play")))
+        toSend.set("PacketData", "B-U-car_tier", str(server.serverData.get("ServerData", "B-U-car_tier")))
+        toSend.set("PacketData", "B-U-game_mode", str(server.serverData.get("ServerData", "B-U-game_mode")))
+        toSend.set("PacketData", "B-U-help_type", str(server.serverData.get("ServerData", "B-U-help_type")))
+        toSend.set("PacketData", "B-U-player_dnf", str(server.serverData.get("ServerData", "B-U-player_dnf")))
 
         toSend.set("PacketData", "B-version", str(server.serverData.get("ServerData", "B-version")))  # Version of the server (exact version) - TRY TO CONNECT TO ACTUAL VERSION OF SERVER
         toSend.set("PacketData", "V", str(server.clientVersion))  # "clientVersion" of server (shows up in server log on startup)
-        toSend.set("PacketData", "B-U-level", str(server.serverData.get("ServerData", "B-U-level")))  # current map of server
-        toSend.set("PacketData", "B-U-gamemode", str(server.serverData.get("ServerData", "B-U-gamemode")))  # Gameplay Mode (Conquest, Rush, SQDM,  etc)
-        toSend.set("PacketData", "B-U-sguid", str(server.serverData.get("ServerData", "B-U-sguid")))  # Game PB Server GUID?
-        toSend.set("PacketData", "B-U-Time", str(server.serverData.get("ServerData", "B-U-Time")))  # uptime of server?
-        toSend.set("PacketData", "B-U-hash", str(server.serverData.get("ServerData", "B-U-hash")))  # Game hash?
-        toSend.set("PacketData", "B-U-region", str(server.serverData.get("ServerData", "B-U-region")))  # Game region
-        toSend.set("PacketData", "B-U-public", str(server.serverData.get("ServerData", "B-U-public")))  # Game is public
-        toSend.set("PacketData", "B-U-elo", str(server.serverData.get("ServerData", "B-U-elo")))  # value that determines how good the players on the server are?
+        toSend.set("PacketData", "B-U-max_online_player", str(server.serverData.get("ServerData", "B-U-max_online_player"))) 
+        toSend.set("PacketData", "B-U-n2o", str(server.serverData.get("ServerData", "B-U-n2o")))
+        toSend.set("PacketData", "B-U-track", str(server.serverData.get("ServerData", "B-U-track")))
+        toSend.set("PacketData", "B-U-collision_detection", str(server.serverData.get("ServerData", "B-U-collision_detection")))
+        toSend.set("PacketData", "B-U-version", str(server.serverData.get("ServerData", "B-U-version")))
+        toSend.set("PacketData", "B-U-race_type_sprint", str(server.serverData.get("ServerData", "B-U-race_type_sprint")))
+        toSend.set("PacketData", "B-U-race_type_pursuit_tag", str(server.serverData.get("ServerData", "B-U-race_type_pursuit_tag")))
+        toSend.set("PacketData", "B-U-race_type_speedtrap", str(server.serverData.get("ServerData", "B-U-race_type_speedtrap")))
 
-        toSend.set("PacketData", "B-numObservers", str(server.serverData.get("ServerData", "B-numObservers")))  # Observers = spectators? or admins?
-        toSend.set("PacketData", "B-maxObservers", str(server.serverData.get("ServerData", "B-maxObservers")))  # Game max observers
-        toSend.set("PacketData", "B-U-Provider", str(server.serverData.get("ServerData", "B-U-Provider")))  # provider id, figured out by server
-        toSend.set("PacketData", "B-U-gameMod", str(server.serverData.get("ServerData", "B-U-gameMod")))  # maybe different value for vietnam here?
-        toSend.set("PacketData", "B-U-QueueLength", str(server.serverData.get("ServerData", "B-U-QueueLength")))  # players in queue or maximum queue length? (sometimes smaller than QP (-1?))
+        toSend.set("PacketData", "B-U-game_type", str(server.serverData.get("ServerData", "B-game_type")))
+        toSend.set("PacketData", "B-U-race_type_canyon_due", str(server.serverData.get("ServerData", "B-U-race_type_canyon_due")))
+        toSend.set("PacketData", "B-U-race_type_circuit", str(server.serverData.get("ServerData", "B-U-race_type_circuit")))
+        toSend.set("PacketData", "B-U-race_type_knockout", str(server.serverData.get("ServerData", "B-U-race_type_knockout")))
+        toSend.set("PacketData", "B-U-length", str(server.serverData.get("ServerData", "B-U-length")))  # players in queue or maximum queue length? (sometimes smaller than QP (-1?))
         Packet(toSend).send(self, "GDAT", 0x00000000, 0)
 
         toSend = Packet().create()

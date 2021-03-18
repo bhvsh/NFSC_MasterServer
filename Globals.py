@@ -3,6 +3,9 @@ Servers = []
 
 globalUserCount = 0	
 globalUsers = []
+globalServerStartID = 0
+globalServerGameIDGen = 0
+globalServerLobbyIDGen = 0
 
 class ServerUser:
     Username = "username"

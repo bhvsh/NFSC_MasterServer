@@ -21,6 +21,9 @@ class Client:
 
     ping_timer = None
     memcheck_timer = None
+    
+    # NFS modification - NFSC doesn't know the difference between a PlasmaServer and PlasmaClient...
+    serverData = None
 
 
 class Server:

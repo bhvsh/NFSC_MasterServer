@@ -39,10 +39,10 @@ class TCPHandler(Protocol):
             RGET.ReceiveRequest(self, dataObj)
         elif packet_type == 'EPGT':
             EPGT.ReceiveRequest(self, dataObj)
-        #elif packet_type == 'GLST':
-        #    GLST.ReceiveRequest(self, dataObj)
-        #elif packet_type == 'EGAM':
-        #    EGAM.ReceiveRequest(self, dataObj)
+        elif packet_type == 'PSET':
+            PSET.ReceiveRequest(self, dataObj)
+        elif packet_type == 'USCH':
+            USCH.ReceiveRequest(self, dataObj)
         #elif packet_type == 'GDAT':
         #    GDAT.ReceiveRequest(self, dataObj)
         #elif packet_type == 'ECNL':

@@ -1,1 +1,1 @@
-__all__ = ['AUTH', 'RGET', 'EPGT']
+__all__ = ['AUTH', 'RGET', 'EPGT', 'PSET', 'USCH']

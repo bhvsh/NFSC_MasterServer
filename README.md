@@ -9,17 +9,18 @@ Based on [Battlefield: Bad Company 2 Master Server Emulator](https://github.com/
 Legal notes
 -----------
 
-- The project aren't containing *any* of the original code from the game!!! 
-- It is an emulated program!
-- That are imitating original server
+- The project does not contain *any* of the original code from the game 
+- It is an emulated program
+- That imitates original server
 - It is completely legal to use this code!
- 
+
 
 Requirements
 ------------
 
 - Need for Speed Carbon
-- Redirects from the official FESL servers (TODO - add override ASI code and links)
+- FESL SSL removal patch on NFSC executable
+- NFSC_OnlineMod
 
 Module           | Version | Download
 ----------------:|:-------:|:------------
@@ -51,32 +52,20 @@ Setting up the emulator
 - Write the IP of the PC where the emulator will be hosted in the config.ini to the key 'emulator_ip' (overwrite "localhost") and save it
 - Run `Init.py`
 
-Setting up Client and Server (TODO - THESE INSTRUCTIONS AREN'T 100% VALID YET FOR NFS CARBON)
+Setting up Client and Server
 ----------------------------
 
-There are 2 different methods you can choose from to set them up
-
-1. Using the dinput8.dll hook
-
-1.1. Simply put the "dinput8.dll" file in the root directory of the Client/Server (where the executable is located)
-
-2. Manually modifying the binaries and redirect the IP's over the hosts file
-
-2.1. First remove the SLL verification of the executable by using the lame patcher tool (http://aluigi.altervista.org/mytoolz/lpatch.zip) with the fesl patch (http://aluigi.altervista.org/patches/fesl.lpatch)
-
-2.2. Add this to your hosts file:
-
-    # redirect client ip's
-    xxx nfs-pc.fesl.ea.com
-    xxx nfs-pc.theater.ea.com
-
-*Where 'xxx' stands for the IP of the PC that hosts the emulator.*
+1. Remove the SSL verification of the executable by using the lame patcher tool (http://aluigi.altervista.org/mytoolz/lpatch.zip) with the fesl patch (http://aluigi.altervista.org/patches/fesl.lpatch) (TODO - ELIMINATE THE NEED FOR THIS - this is to be included in OnlineMod)
+2. Install NFSC_OnlineMod from the repository by following the instructions included in the directory. With it you can set your custom overrides for the server IP addresses.
 
 
 TODO LIST
 -----------
-- Add accompanying ASI code for ingame overrides (and SSL patching)
-- GLST currently crashes
+- Add accompanying ASI code for SSL patching
+- GDAT currently crashes
+- PlayNow / pnow (PlasmaClient) - this needs a lot of research to make matchmaking functional
 - More EA Messenger backend code
 - lots and lots of testing
 - Python3 conversion or even a rewrite entirely?
+- Support for multiple lobbies?
+

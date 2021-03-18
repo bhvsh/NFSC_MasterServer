@@ -8,7 +8,13 @@ def ReceiveRequest(self, data):
 
     lid = data.get("PacketData", "LID")
     gid = data.get("PacketData", "GID")
-
+    
+    toSendGDET = Packet().create()
+    toSendGDET.set("PacketData", "TID", str(data.get("PacketData", "TID") - 1))
+    toSendGDET.set("PacketData", "UGID", server.serverData.get("ServerData", "UGID"))
+    toSendGDET.set("PacketData", "LID", str(lid))
+    toSendGDET.set("PacketData", "GID", str(gid))
+    
     toSendEGAM = Packet().create()
     toSendEGAM.set("PacketData", "TID", str(data.get("PacketData", "TID")))
     toSendEGAM.set("PacketData", "LID", str(lid))
@@ -44,6 +50,7 @@ def ReceiveRequest(self, data):
         toSend.set("PacketData", "GID", str(gid))
 
         Packet(toSend).send(server.theaterInt, "EGRQ", 0x00000000, 0)
+        Packet(toSendGDET).send(self, "GDET", 0x00000000, 0)
         Packet(toSendEGAM).send(self, "EGAM", 0x00000000, 0)
 
         toSend = Packet().create()
@@ -56,7 +63,7 @@ def ReceiveRequest(self, data):
 
         toSend.set("PacketData", "HUID", str(server.personaID))
         toSend.set("PacketData", "INT-PORT", str(server.serverData.get("ServerData", "INT-PORT")))  # Port
-        toSend.set("PacketData", "EKEY", "AIBSgPFqRDg0TfdXW1zUGa4%3d")  # this must be the same key as the one we have on the server? keep it constant in both connections for now (we could integrate it in the database...)
+        toSend.set("PacketData", "EKEY", "VheUv4/XQSxSumZDAJ4ueg%3d%3d")  # this must be the same key as the one we have on the server? keep it constant in both connections for now (we could integrate it in the database...)
         toSend.set("PacketData", "INT-IP", server.serverData.get("ServerData", "INT-IP"))  # internal ip where the SERVER is hosted
         toSend.set("PacketData", "UGID", server.serverData.get("ServerData", "UGID"))
         toSend.set("PacketData", "LID", str(lid))
