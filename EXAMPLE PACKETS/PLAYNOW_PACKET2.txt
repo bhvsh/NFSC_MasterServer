@@ -1,0 +1,140 @@
+TXN=Start
+partition.partition=/EAGAMES/NFS-2007
+debugLevel=off
+players.[]=1
+players.0.ownerId=907370134
+players.0.ownerType=1
+players.0.props.{sessionType}=resetServer
+players.0.props.{name}=xan1242
+players.0.props.{firewallType}=unknown
+players.0.props.{poolMaxPlayers}=8
+players.0.props.{poolTimeout}=40
+players.0.props.{poolTargetPlayers}=0:8|5:6|10:4|15:2
+players.0.props.{fitThreshold}=0:5500|5:5200|10:4900|15:4300|20:3100|25:1900|30:700|35:0
+players.0.props.{hostSetupTimeout}=60
+players.0.props.{ping}=nfs-wc:203|nfs-eu:47|nfs-ec:-3
+players.0.props.{filter-version}=298_prod_server+22012b18
+players.0.props.{filterToGame-version}=version
+players.0.props.{filter-game_type}=0
+players.0.props.{filterToGame-game_type}=U-game_type
+players.0.props.{filter-matchmaking_state}=1
+players.0.props.{filterToGame-matchmaking_state}=U-matchmaking_state
+players.0.props.{pref-car_tier}=3
+players.0.props.{prefVotingMethod-car_tier}=plurality
+players.0.props.{fitValues-car_tier}="1,2,3,ABSTAIN"
+players.0.props.{fitTable-car_tier}=1;0.5;0;1|0.5;1;0.5;1|0;0.5;1;1|1;1;1;1
+players.0.props.{fitWeight-car_tier}=150
+players.0.props.{prefToGame-car_tier}=U-car_tier
+players.0.props.{pref-collision_detection}=1
+players.0.props.{prefVotingMethod-collision_detection}=plurality
+players.0.props.{fitValues-collision_detection}="0,1,ABSTAIN"
+players.0.props.{fitTable-collision_detection}=1;0;1|0;1;1|1;1;1
+players.0.props.{fitWeight-collision_detection}=25
+players.0.props.{prefToGame-collision_detection}=U-collision_detection
+players.0.props.{pref-game_mode}=1
+players.0.props.{prefVotingMethod-game_mode}=plurality
+players.0.props.{fitValues-game_mode}="1,0,5,13,15,14,ABSTAIN"
+players.0.props.{fitTable-game_mode}=1;0.6;0.6;0.4;0.4;0;1|0.6;1;0.6;0.4;0.4;0;1|0.6;0.6;1;0.4;0.4;0;1|0.4;0.4;0.4;1;0.2;0;1|0.4;0.4;0.4;0.2;1;0.6;1|0;0;0;0;0.6;1;1|1;1;1;1;1;1;1
+players.0.props.{fitWeight-game_mode}=500
+players.0.props.{prefToGame-game_mode}=U-game_mode
+players.0.props.{pref-help_type}=0
+players.0.props.{prefVotingMethod-help_type}=plurality
+players.0.props.{fitValues-help_type}="0,1,2,3"
+players.0.props.{fitTable-help_type}=0.8;-1;-1;1|1;0.9;-1;0.9|1;-1;1;1|1;0.9;1;1
+players.0.props.{fitWeight-help_type}=14000
+players.0.props.{prefToGame-help_type}=U-help_type
+players.0.props.{pref-length}=2
+players.0.props.{prefVotingMethod-length}=plurality
+players.0.props.{fitValues-length}="1,2,3,4,ABSTAIN"
+players.0.props.{fitTable-length}=1;0.75;0.3;0;1|0.75;1;0.75;0.3;1|0.3;0.75;1;0.75;1|0;0.3;0.75;1;1|1;1;1;1;1
+players.0.props.{fitWeight-length}=100
+players.0.props.{prefToGame-length}=U-length
+players.0.props.{pref-location}=nfs-ec
+players.0.props.{prefVotingMethod-location}=plurality
+players.0.props.{fitValues-location}="nfs-wc,nfs-ec,nfs-eu"
+players.0.props.{fitTable-location}=1;0.8;0.2|0.8;1;0.6|0.2;0.6;1
+players.0.props.{fitWeight-location}=1000
+players.0.props.{prefToGame-location}=U-location
+players.0.props.{prefToGameOps-location}=matchunusedserver
+players.0.props.{pref-n2o}=1
+players.0.props.{prefVotingMethod-n2o}=plurality
+players.0.props.{fitValues-n2o}="0,1,ABSTAIN"
+players.0.props.{fitTable-n2o}=1;0;1|0;1;1|1;1;1
+players.0.props.{fitWeight-n2o}=25
+players.0.props.{prefToGame-n2o}=U-n2o
+players.0.props.{pref-race_type_canyon_due}=ABSTAIN
+players.0.props.{prefVotingMethod-race_type_canyon_due}=plurality
+players.0.props.{fitValues-race_type_canyon_due}="2.duel,3.duel,qr.3.3,qr.3.1,5.duel,4.duel,qr.3.2,ABSTAIN"
+players.0.props.{fitTable-race_type_canyon_due}=1;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;1;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;1;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;1;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;1;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;1;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;1;1|1;1;1;1;1;1;1;1
+players.0.props.{fitWeight-race_type_canyon_due}=125
+players.0.props.{prefToGame-race_type_canyon_due}=U-race_type_canyon_due
+players.0.props.{pref-race_type_circuit}=ex.5.1
+players.0.props.{prefVotingMethod-race_type_circuit}=plurality
+players.0.props.{fitValues-race_type_circuit}="ex.5.1,sf.2.1,tn.3.1,mu.2.3,ct.1.1,ce.3.3,tn.2.1,cs.8.1,ct.3.1,ex.2.1,ce.3.2,cs.8.3,cs.8.2,ct.2.1,ex.1.1,tn.1.1,ex.4.1,online,mu.3.1,ct.7.3,ct.5.3,tn.5.1,ce.3.1,mu.1.1,ABSTAIN"
+players.0.props.{fitTable-race_type_circuit}=1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;1|1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1
+players.0.props.{fitWeight-race_type_circuit}=125
+players.0.props.{prefToGame-race_type_circuit}=U-race_type_circuit
+players.0.props.{pref-race_type_knockout}=ABSTAIN
+players.0.props.{prefVotingMethod-race_type_knockout}=plurality
+players.0.props.{fitValues-race_type_knockout}="qr.5.3,qr.5.4,qr.5.2,ko.proto,qr.5.5,qr.5.1,ABSTAIN"
+players.0.props.{fitTable-race_type_knockout}=1;0.8;0.8;0.8;0.8;0.8;1|0.8;1;0.8;0.8;0.8;0.8;1|0.8;0.8;1;0.8;0.8;0.8;1|0.8;0.8;0.8;1;0.8;0.8;1|0.8;0.8;0.8;0.8;1;0.8;1|0.8;0.8;0.8;0.8;0.8;1;1|1;1;1;1;1;1;1
+players.0.props.{fitWeight-race_type_knockout}=125
+players.0.props.{prefToGame-race_type_knockout}=U-race_type_knockout
+players.0.props.{pref-race_type_pursuit_tag}=ABSTAIN
+players.0.props.{prefVotingMethod-race_type_pursuit_tag}=plurality
+players.0.props.{fitValues-race_type_pursuit_tag}="qr.6.2,qr.6.4,qr.6.5,qr.6.1,tag.proto,qr.6.3,ABSTAIN"
+players.0.props.{fitTable-race_type_pursuit_tag}=1;0.8;0.8;0.8;0.8;0.8;1|0.8;1;0.8;0.8;0.8;0.8;1|0.8;0.8;1;0.8;0.8;0.8;1|0.8;0.8;0.8;1;0.8;0.8;1|0.8;0.8;0.8;0.8;1;0.8;1|0.8;0.8;0.8;0.8;0.8;1;1|1;1;1;1;1;1;1
+players.0.props.{fitWeight-race_type_pursuit_tag}=125
+players.0.props.{prefToGame-race_type_pursuit_tag}=U-race_type_pursuit_tag
+players.0.props.{pref-race_type_speedtrap}=ABSTAIN
+players.0.props.{prefVotingMethod-race_type_speedtrap}=plurality
+players.0.props.{fitValues-race_type_speedtrap}="mu.3.3,ct.4.3,cs.11.2,ex.2.3,mu.5.1,ct.5.1,tn.4.2,ct.3.2,mu.2.2,tn.3.3,cs.11.3,cs.11.1,mu.4.2,ABSTAIN"
+players.0.props.{fitTable-race_type_speedtrap}=1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;1|1;1;1;1;1;1;1;1;1;1;1;1;1;1
+players.0.props.{fitWeight-race_type_speedtrap}=125
+players.0.props.{prefToGame-race_type_speedtrap}=U-race_type_speedtrap
+players.0.props.{pref-race_type_sprint}=ABSTAIN
+players.0.props.{prefVotingMethod-race_type_sprint}=plurality
+players.0.props.{fitValues-race_type_sprint}="ex.4.2,ct.5.2,cs.9.1,mu.5.2,ex.3.3,tn.2.3,qr.4.1,mu.2.1,ce.2.1,cs.2.2,ce.2.2,qr.4.6,qr.4.4,cs.2.1,qr.4.3,ct.1.3,cs.2.3,ct.6.1,cs.9.3,ex.5.2,ct.2.3,ct.4.2,ex.2.2,tn.4.1,tn.1.3,ex.3.1,qr.4.2,mu.1.2,tn.3.2,cs.9.2,mu.3.2,ABSTAIN"
+players.0.props.{fitTable-race_type_sprint}=1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;0.8;1|0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;0.8;1;1|1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1
+players.0.props.{fitWeight-race_type_sprint}=125
+players.0.props.{prefToGame-race_type_sprint}=U-race_type_sprint
+players.0.props.{pref-team_play}=1
+players.0.props.{prefVotingMethod-team_play}=plurality
+players.0.props.{fitValues-team_play}="0,1,ABSTAIN"
+players.0.props.{fitTable-team_play}=-1;-1;-1|-1;1;1|-1;1;1
+players.0.props.{fitWeight-team_play}=500
+players.0.props.{prefToGame-team_play}=U-team_play
+players.0.props.{pref-max_online_player}=8
+players.0.props.{fitScale-max_online_player}=5
+players.0.props.{fitWeight-max_online_player}=75
+players.0.props.{prefToGame-max_online_player}=U-max_online_player
+players.0.props.{pref-player_dnf}=25
+players.0.props.{fitScale-player_dnf}=4
+players.0.props.{fitWeight-player_dnf}=500
+players.0.props.{prefToGame-player_dnf}=U-player_dnf
+players.0.props.{pref-skill}=1000
+players.0.props.{fitScale-skill}=700
+players.0.props.{fitWeight-skill}=3000
+players.0.props.{prefToGame-skill}=U-skill
+players.0.props.{}=111
+
+THIS RESULTED IN SERVER REPLYING:
+<-N res pnow 0x8000001a {TXN=Start, id.id=2551, id.partition=/eagames/NFS-2007}
+<-A res pnow 0x80000000 {sessionState=COMPLETE, props.{avgFit}=0.7970685710651951, props.{games}.[]=1, props.{games}.0.gid=235279, TXN=Status, props.{}=3, props.{games}.0.lid=257, props.{resultType}=JOIN, id.id=2551, id.partition=/eagames/NFS-2007}
+->N GDAT {LID=257, GID=235279, TID=6}
+<-N GDAT {JP=2, HN=nfsdevserver, B-U-matchmaking_state=1, N=NA2CarbonPC-02-019, B-U-team_play=1, I=159.153.164.148, J=O, HU=799270239, B-U-car_tier=3, V=1.0, P=19018, B-U-game_mode=1, TYPE=G, LID=257, B-U-help_type=0, B-U-player_dnf=12, B-version=298_prod_server+22012b18, B-U-max_online_player=8, B-U-n2o=1, B-U-track=, QP=0, MP=8, B-U-collision_detection=1, B-U-version=298_prod_server+22012b18, B-U-race_type_sprint=ct.4.2, B-U-race_type_pursuit_tag=qr.6.1, GID=235279, PL=PC, PW=0, TID=6, B-U-race_type_speedtrap=mu.2.2, B-U-skill=500, B-U-game_type=0, B-U-race_type_canyon_due=qr.3.3, B-U-race_type_circuit=ex.5.1, AP=0, B-U-race_type_knockout=qr.5.1, B-U-length=2}
+->N EGAM {PORT=7322, R-INT-PORT=1042, R-INT-IP=192.168.5.113, LID=257, GID=235279, TID=7}
+<-U GDET {TID=6, UGID=4e26106f-8c56-48bd-8615-824d41051c9a, LID=257, GID=235279}
+<-N EGAM {TID=7, LID=257, GID=235279}
+<-A EGEG {PL=pc, TICKET=1525737929, PID=10, P=19018, HUID=799270239, INT-PORT=19018, EKEY=VheUv4/XQSxSumZDAJ4ueg%3d%3d, INT-IP=159.153.164.148, UGID=4e26106f-8c56-48bd-8615-824d41051c9a, I=159.153.164.148, LID=257, GID=235279}
+
+MakeConnId created connident: 0x1013970fa
+GM: Sent hello to host.
+GM: Received host hello.
+GM: Received roster element.
+GM: Received roster notice for player 10.
+<-A PGET {STAT="en%3dPlaying Need for Speed Carbon", TIID=0, TITL="Need for Speed Carbon", SHOW=CHAT, ATTR=, CHNG=1, USER=nfsdevserver@messaging.ea.com/eagames/NFS-2007}
+
+
+SETUP:
+Condo Row Circuit Race Any Class

@@ -1,0 +1,9 @@
+->N PADD {USER=nfsdevserver, ID=8}
+<-A PGET {STAT="en%3dPlaying Need for Speed Carbon", TIID=0, TITL="Need for Speed Carbon", ID=auto-subscribe%3a3905, SHOW=CHAT, ATTR=, USER=nfsdevserver@messaging.ea.com/eagames/NFS-2007}
+<-N PADD {ID=8}
+<-U PGET {STAT="en%3dPlaying Need for Speed Carbon", TIID=0, TITL="Need for Speed Carbon", ID=8, SHOW=CHAT, ATTR=, USER=nfsdevserver@messaging.ea.com/eagames/NFS-2007}
+
+MESSAGE SENT
+
+->N SEND {TYPE=C, USER=nfsdevserver, SUBJ=, BODY="This is a test message blablabla", SECS=3600, ID=9}
+<-N SEND {ID=9}
