@@ -14,6 +14,13 @@ Legal notes
 - That imitates original server
 - It is completely legal to use this code!
 
+HELP WANTED
+-----------
+If you have expertise in making a basic matchmaking server, please contact me!
+
+This project would greatly benefit from your help!
+
+I am by no means qualified to write a server, this is a hack job at best.
 
 Requirements
 ------------
@@ -68,4 +75,3 @@ TODO LIST
 - lots and lots of testing
 - Python3 conversion or even a rewrite entirely?
 - Support for multiple lobbies?
-
