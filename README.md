@@ -75,3 +75,4 @@ TODO LIST
 - lots and lots of testing
 - Python3 conversion or even a rewrite entirely?
 - Support for multiple lobbies?
+- Maybe instead fork off the excellent project here: https://github.com/OSHeroes/bfheroesFesl (which means this Python version will die in that case)
