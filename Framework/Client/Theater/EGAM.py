@@ -9,12 +9,6 @@ def ReceiveRequest(self, data):
     lid = data.get("PacketData", "LID")
     gid = data.get("PacketData", "GID")
     
-    toSendGDET = Packet().create()
-    toSendGDET.set("PacketData", "TID", str(data.get("PacketData", "TID") - 1))
-    toSendGDET.set("PacketData", "UGID", server.serverData.get("ServerData", "UGID"))
-    toSendGDET.set("PacketData", "LID", str(lid))
-    toSendGDET.set("PacketData", "GID", str(gid))
-    
     toSendEGAM = Packet().create()
     toSendEGAM.set("PacketData", "TID", str(data.get("PacketData", "TID")))
     toSendEGAM.set("PacketData", "LID", str(lid))
@@ -50,7 +44,6 @@ def ReceiveRequest(self, data):
         toSend.set("PacketData", "GID", str(gid))
 
         Packet(toSend).send(server.theaterInt, "EGRQ", 0x00000000, 0)
-        Packet(toSendGDET).send(self, "GDET", 0x00000000, 0)
         Packet(toSendEGAM).send(self, "EGAM", 0x00000000, 0)
 
         toSend = Packet().create()
