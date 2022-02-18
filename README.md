@@ -62,7 +62,7 @@ Setting up the emulator
 Setting up Client and Server
 ----------------------------
 
-1. Remove the SSL verification of the executable by using the lame patcher tool (http://aluigi.altervista.org/mytoolz/lpatch.zip) with the fesl patch (http://aluigi.altervista.org/patches/fesl.lpatch) (TODO - ELIMINATE THE NEED FOR THIS - this is to be included in OnlineMod)
+1. Remove the SSL verification of the executable by using the Lame Patcher tool (http://aluigi.altervista.org/mytoolz/lpatch.zip) with the fesl patch (http://aluigi.altervista.org/patches/fesl.lpatch) (or get the patched executable from NFSC_OnlineMod)
 2. Install NFSC_OnlineMod from the repository by following the instructions included in the directory. With it you can set your custom overrides for the server IP addresses.
 
 

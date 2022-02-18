@@ -11,9 +11,11 @@ In this directory you will find a module for:
 
 1. Copy .asi and .ini from bin/Release to the scripts folder in your NFSC installation
 
-2. Configure .ini file to your liking
+2. Copy and replace the executable from this directory to your NFSC installation directory (if you have avoided using the Lame Patcher)
 
-   2.1. If you want to connect to a custom server, set EnableOverrides to 1 and set all addresses to the custom server (Plasma, Theater and Messenger)
+3. Configure .ini file to your liking
+
+   3.1. If you want to connect to a custom server, set EnableOverrides to 1 and set all addresses to the custom server (Plasma, Theater and Messenger)
 
 ### Debuggers / Testers / Reverse Engineers / Snoopers
 

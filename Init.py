@@ -25,7 +25,7 @@ except ImportError as importErr:
 
 
 def MainApp():
-    Log("Init", "\033[37m").new_message("Initializing Battlefield: Bad Company 2 Master Server Emulator...", 0)
+    Log("Init", "\033[37m").new_message("Initializing NFS: Carbon Master Server Emulator...", 0)
 
     try:
         ssl_key = readFromConfig("SSL", "priv_key_path")
