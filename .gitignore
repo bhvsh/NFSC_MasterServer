@@ -62,3 +62,4 @@ target/
 
 # Custom
 Data/Database.db
+/.vs
