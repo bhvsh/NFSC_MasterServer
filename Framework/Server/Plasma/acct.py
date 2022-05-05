@@ -17,7 +17,7 @@ def HandleNuLogin(self, data):
     returnEncryptedInfo = int(data.get("PacketData", "returnEncryptedInfo"))  # If 1 - User wants to store login information
 
     try:
-        nuid = data.get('PacketData', "nuid")
+        name = data.get('PacketData', "name")
         password = data.get('PacketData', "password")
     except:
         encryptedInfo = data.get("PacketData", "encryptedInfo")
@@ -27,11 +27,11 @@ def HandleNuLogin(self, data):
 
         loginData = b64decode(encryptedLoginData).split('\f')
 
-        nuid = loginData[0]
+        name = loginData[0]
         password = loginData[1]
 
     try:
-        serverPassword = self.CONNOBJ.validServers[nuid]['password']
+        serverPassword = self.CONNOBJ.validServers[name]['password']
 
         if serverPassword == password:
             loginStatus = True
@@ -43,11 +43,11 @@ def HandleNuLogin(self, data):
 
     if loginStatus:
         self.CONNOBJ.accountSessionKey = db.registerSession()
-        self.CONNOBJ.userID = self.CONNOBJ.validServers[nuid]['id']
-        self.CONNOBJ.nuid = nuid
+        self.CONNOBJ.userID = self.CONNOBJ.validServers[name]['id']
+        self.CONNOBJ.name = name
 
         toSend.set("PacketData", "lkey", self.CONNOBJ.accountSessionKey)
-        toSend.set("PacketData", "nuid", nuid)
+        toSend.set("PacketData", "name", name)
 
         if returnEncryptedInfo == 1:
             encryptedLoginData = "Ciyvab0tregdVsBtboIpeChe4G6uzC1v5_-SIxmvSL"
@@ -58,19 +58,19 @@ def HandleNuLogin(self, data):
         toSend.set("PacketData", "profileId", str(self.CONNOBJ.userID))
         toSend.set("PacketData", "userId", str(self.CONNOBJ.userID))
 
-        self.logger.new_message("[Login] Server " + nuid + " logged in successfully!", 1)
+        self.logger.new_message("[Login] Server " + name + " logged in successfully!", 1)
     elif loginStatus == "INCORRECT_PASSWORD":  # The password the user specified is incorrect
         toSend.set("PacketData", "localizedMessage", "The password the user specified is incorrect")
         toSend.set("PacketData", "errorContainer.[]", "0")
         toSend.set("PacketData", "errorCode", "122")
 
-        self.logger_err.new_message("[Login] Server " + nuid + " specified incorrect password!", 1)
+        self.logger_err.new_message("[Login] Server " + name + " specified incorrect password!", 1)
     else:  # User not found
         toSend.set("PacketData", "localizedMessage", "The user was not found")
         toSend.set("PacketData", "errorContainer.[]", "0")
         toSend.set("PacketData", "errorCode", "101")
 
-        self.logger_err.new_message("[Login] Server " + nuid + " does not exist", 1)
+        self.logger_err.new_message("[Login] Server " + name + " does not exist", 1)
 
     Packet(toSend).send(self, "acct", 0x80000000, self.CONNOBJ.plasmaPacketID)
 
@@ -85,7 +85,7 @@ def HandleNuGetPersonas(self):
     userID = self.CONNOBJ.userID
 
     if userID == 1:
-        toSend.set("PacketData", "personas.0", "bfbc2.server.p")
+        toSend.set("PacketData", "personas.0", "nfs.server.p")
     elif userID == 2:
         toSend.set("PacketData", "personas.0", "bfbc.server.ps")
     elif userID == 3:
@@ -109,12 +109,12 @@ def HandleNuLoginPersona(self, data):
         toSend.set("PacketData", "profileId", str(self.CONNOBJ.personaID))
         toSend.set("PacketData", "userId", str(self.CONNOBJ.personaID))
 
-        self.logger.new_message("[Persona] Server " + self.CONNOBJ.nuid + " just logged as " + requestedPersonaName, 1)
+        self.logger.new_message("[Persona] Server " + self.CONNOBJ.name + " just logged as " + requestedPersonaName, 1)
     else:
         toSend.set("PacketData", "localizedMessage", "The user was not found")
         toSend.set("PacketData", "errorContainer.[]", "0")
         toSend.set("PacketData", "errorCode", "101")
-        self.logger_err.new_message("[Persona] Server " + self.CONNOBJ.nuid + " wanted to login as " + requestedPersonaName + " but this persona cannot be found!", 1)
+        self.logger_err.new_message("[Persona] Server " + self.CONNOBJ.name + " wanted to login as " + requestedPersonaName + " but this persona cannot be found!", 1)
 
     Packet(toSend).send(self, "acct", 0x80000000, self.CONNOBJ.plasmaPacketID)
 
@@ -259,7 +259,7 @@ def HandleNuLookupUserInfo(self, data):
 
 
 def ReceivePacket(self, data, txn):
-    if txn == 'NuLogin':
+    if txn == 'Login':
         HandleNuLogin(self, data)
     elif txn == 'NuGetPersonas':
         HandleNuGetPersonas(self)
@@ -267,7 +267,7 @@ def ReceivePacket(self, data, txn):
         HandleNuLoginPersona(self, data)
     elif txn == 'NuGetEntitlements':
         HandleNuGetEntitlements(self, data)
-    elif txn == 'NuLookupUserInfo':
+    elif txn == 'LookupUserInfo':
         HandleNuLookupUserInfo(self, data)
     else:
         self.logger_err.new_message("[" + self.ip + ":" + str(self.port) + ']<-- Got unknown acct message (' + txn + ")", 2)

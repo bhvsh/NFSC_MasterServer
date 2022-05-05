@@ -20,29 +20,30 @@ def HandleStart(self, data): # TODO - Add PlayNow matchmaking handling here... C
     
     # TODO - FIGURE OUT HOW THE WEIGHTS AND TABLE SHENANIGANS WORK
     
-    # relevant pnow data the game sends in the first request
-    filter-matchmaking_state = data.get("PacketData", "players.0.props.{filter-matchmaking_state}") # PossibleValues = 0,1  //Off, On
-    filter-game_type = data.get("PacketData", "players.0.props.{filter-game_type}") # PossibleValues = 0,1,2 //ranked, unranked, co_op
-    poolMaxPlayers = data.get("PacketData", "players.0.props.{poolMaxPlayers}")
-    # preferences provided by the asking player
-    pref-team_play = data.get("PacketData", "players.0.props.{pref-team_play}") # StringPreference / Labels = 0, 1, ABSTAIN //crew, solo
-    pref-car_tier = data.get("PacketData", "players.0.props.{pref-car_tier}") # StringPreference / Labels = 1, 2, 3, ABSTAIN
-    pref-game_mode = data.get("PacketData", "players.0.props.{pref-game_mode}") # StringPreference / Labels = 1, 0, 5, 13, 15, 14, ABSTAIN //Labels = circuit, sprint, speedtrap, canyon duel, pursuit_knockout, pursuit_tag, ABSTAIN
-    pref-player_dnf = data.get("PacketData", "players.0.props.{pref-player_dnf}") # IntegerPreference
-    pref-max_online_player = data.get("PacketData", "players.0.props.{pref-max_online_player}") # IntegerPreference 
-    pref-n2o = data.get("PacketData", "players.0.props.{pref-n2o}") # StringPreference / Labels = 0, 1, ABSTAIN //off, on
-    pref-collision_detection = data.get("PacketData", "players.0.props.{pref-collision_detection}") # StringPreference / Labels = 0, 1, ABSTAIN //off, on
-    pref-race_type_sprint = data.get("PacketData", "players.0.props.{pref-race_type_sprint}")
-    pref-race_type_pursuit_tag = data.get("PacketData", "players.0.props.{pref-race_type_pursuit_tag}")
-    pref-race_type_speedtrap = data.get("PacketData", "players.0.props.{pref-race_type_speedtrap}")
-    pref-race_type_canyon_due = data.get("PacketData", "players.0.props.{pref-race_type_canyon_due}")
-    pref-race_type_circuit = data.get("PacketData", "players.0.props.{pref-race_type_circuit}")
-    pref-race_type_knockout = data.get("PacketData", "players.0.props.{pref-race_type_knockout}")
-    pref-length = data.get("PacketData", "players.0.props.{pref-length}") # StringPreference / Labels = 1, 2, 3, 4, ABSTAIN //short, medium, long, verylong
-    pref-help_type = data.get("PacketData", "players.0.props.{pref-help_type}") # StringPreference / Labels = 0, 1, 2, 3 //Labels = no_help, help_in_career, help_in_challenge, help_either
-    pref-skill = data.get("PacketData", "players.0.props.{pref-skill}") # IntegerPreference
-    pref-location = = data.get("PacketData", "players.0.props.{pref-location}") # StringPreference / Labels = nfs-wc, nfs-ec, nfs-eu 
-    
+ #   # relevant pnow data the game sends in the first request
+ #   # PossibleValues = 0,1  //Off, On
+ #   filter-matchmaking_state = data.get("PacketData", "players.0.props.{filter-matchmaking_state}")
+ #   filter-game_type = data.get("PacketData", "players.0.props.{filter-game_type}") # PossibleValues = 0,1,2 //ranked, unranked, co_op
+ #   poolMaxPlayers = data.get("PacketData", "players.0.props.{poolMaxPlayers}")
+ #   # preferences provided by the asking player
+ #   pref-team_play = data.get("PacketData", "players.0.props.{pref-team_play}") # StringPreference / Labels = 0, 1, ABSTAIN //crew, solo
+ #   pref-car_tier = data.get("PacketData", "players.0.props.{pref-car_tier}") # StringPreference / Labels = 1, 2, 3, ABSTAIN
+ #   pref-game_mode = data.get("PacketData", "players.0.props.{pref-game_mode}") # StringPreference / Labels = 1, 0, 5, 13, 15, 14, ABSTAIN //Labels = circuit, sprint, speedtrap, canyon duel, pursuit_knockout, pursuit_tag, ABSTAIN
+ #   pref-player_dnf = data.get("PacketData", "players.0.props.{pref-player_dnf}") # IntegerPreference
+ #   pref-max_online_player = data.get("PacketData", "players.0.props.{pref-max_online_player}") # IntegerPreference 
+ #   pref-n2o = data.get("PacketData", "players.0.props.{pref-n2o}") # StringPreference / Labels = 0, 1, ABSTAIN //off, on
+ #   pref-collision_detection = data.get("PacketData", "players.0.props.{pref-collision_detection}") # StringPreference / Labels = 0, 1, ABSTAIN //off, on
+ #   pref-race_type_sprint = data.get("PacketData", "players.0.props.{pref-race_type_sprint}")
+ #   pref-race_type_pursuit_tag = data.get("PacketData", "players.0.props.{pref-race_type_pursuit_tag}")
+ #   pref-race_type_speedtrap = data.get("PacketData", "players.0.props.{pref-race_type_speedtrap}")
+ #   pref-race_type_canyon_due = data.get("PacketData", "players.0.props.{pref-race_type_canyon_due}")
+ #   pref-race_type_circuit = data.get("PacketData", "players.0.props.{pref-race_type_circuit}")
+ #   pref-race_type_knockout = data.get("PacketData", "players.0.props.{pref-race_type_knockout}")
+ #   pref-length = data.get("PacketData", "players.0.props.{pref-length}") # StringPreference / Labels = 1, 2, 3, 4, ABSTAIN //short, medium, long, verylong
+ #   pref-help_type = data.get("PacketData", "players.0.props.{pref-help_type}") # StringPreference / Labels = 0, 1, 2, 3 //Labels = no_help, help_in_career, help_in_challenge, help_either
+ #   pref-skill = data.get("PacketData", "players.0.props.{pref-skill}") # IntegerPreference
+ #   # StringPreference / Labels = nfs-wc, nfs-ec, nfs-eu
+ #   pref-location = data.get("PacketData", "players.0.props.{pref-location}")
     toSend = Packet().create()
     toSend.set("PacketData", "TXN", "Start")
     toSend.set("PacketData", "id.id", str(globalServerStartID))
